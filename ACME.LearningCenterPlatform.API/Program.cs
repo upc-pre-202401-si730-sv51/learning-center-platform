@@ -1,3 +1,5 @@
+using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,21 +13,20 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Configure Database Context and Logging Levels
 
-/*
  builder.Services.AddDbContext<AppDbContext>(options =>
  {
-    if(connectionString != null)
-      if (builder.Environment.IsDevelopment())
-      options.UseMySQL(connectionString)
-      .LogTo(Console.WriteLine, LogLevel.Information);
-      .EnableSensitiveDataLogging()
-      .EnableDetailedErrors();
-      else if (builder.Environment.IsProduction())
-        options.UseMySQL(connectionString)
-        .LogTo(Console.WriteLine, LogLevel.Error);
-        .EnableDetailedErrors();       
+     if (connectionString == null) return;
+     if (builder.Environment.IsDevelopment()) 
+         options.UseMySQL(connectionString)
+             .LogTo(Console.WriteLine, LogLevel.Information)
+             .EnableSensitiveDataLogging()
+             .EnableDetailedErrors();
+     else if (builder.Environment.IsProduction()) 
+         options.UseMySQL(connectionString)
+             .LogTo(Console.WriteLine, LogLevel.Error)
+             .EnableDetailedErrors();
  }); 
- */
+ 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -48,7 +49,7 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
-/*
+
  // Verify Database Objects are Created
  using (var scope = app.Services.CreateScope())
  {
@@ -56,7 +57,6 @@ var app = builder.Build();
     var context = services.GetRequiredService<AppDbContext>();
     context.Database.EnsureCreated();
  }
- */
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
