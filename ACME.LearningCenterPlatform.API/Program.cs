@@ -1,3 +1,4 @@
+using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Interfaces.ASP.Configuration;
 using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -6,7 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+// Add Configuration for Routing
+
+builder.Services.AddControllers( options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
+
+// Configure Lowercase URLs
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 // Add Database Connection
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -44,8 +50,6 @@ builder.Services.AddSwaggerGen(
         });
     });
 
-// Configure Lowercase URLs
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
