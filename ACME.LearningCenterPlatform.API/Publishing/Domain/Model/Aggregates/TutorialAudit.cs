@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using EntityFrameworkCore.CreatedUpdatedDate.Contracts;
 
 namespace ACME.LearningCenterPlatform.API.Publishing.Domain.Model.Aggregates;
 
