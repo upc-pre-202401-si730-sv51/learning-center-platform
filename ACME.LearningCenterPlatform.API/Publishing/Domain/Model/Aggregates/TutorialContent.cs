@@ -16,6 +16,13 @@ public partial class Tutorial : IPublishable
     public bool Readable => HasReadableAssets;
     public bool Viewable => HasViewableAssets;
 
+    public Tutorial()
+    {
+        Title = string.Empty;
+        Summary = string.Empty;
+        Assets = new List<Asset>();
+        Status = EPublishingStatus.Draft;
+    }
     public bool HasAllAssetsWithStatus(EPublishingStatus status)
     {
         return Assets.All(asset => asset.Status == status);
