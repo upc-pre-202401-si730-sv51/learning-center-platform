@@ -1,5 +1,5 @@
 using ACME.LearningCenterPlatform.API.Profiles.Domain.Model.Aggregates;
-using ACME.LearningCenterPlatform.API.Profiles.Domain.Model.Repositories;
+using ACME.LearningCenterPlatform.API.Profiles.Domain.Repositories;
 using ACME.LearningCenterPlatform.API.Profiles.Domain.Model.ValueObjects;
 using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Configuration;
 using ACME.LearningCenterPlatform.API.Shared.Infrastructure.Persistence.EFC.Repositories;
