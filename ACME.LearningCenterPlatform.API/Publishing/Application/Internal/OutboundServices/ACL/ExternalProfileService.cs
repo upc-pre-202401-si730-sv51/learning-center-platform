@@ -1,4 +1,3 @@
-using ACME.LearningCenterPlatform.API.Profiles.Domain.Model.ValueObjects;
 using ACME.LearningCenterPlatform.API.Profiles.Interfaces.ACL;
 using ACME.LearningCenterPlatform.API.Publishing.Domain.Model.ValueObjects;
 
