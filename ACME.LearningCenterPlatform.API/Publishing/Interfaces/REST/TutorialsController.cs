@@ -50,7 +50,8 @@ public class TutorialsController(
             AddVideoAssetToTutorialCommandFromResourceAssembler.ToCommandFromResource(addVideoAssetToTutorialResource,
                 tutorialId);
         var tutorial = await tutorialCommandService.Handle(addVideAssetToTutorialCommand);
+        if (tutorial is null) return BadRequest();
         var resource = TutorialResourceFromEntityAssembler.ToResourceFromEntity(tutorial);
-        return CreatedAtAction(nameof(GetTutorialById), new { tutorialIdentifier = resource.Id }, resource);
+        return CreatedAtAction(nameof(GetTutorialById), new { tutorialId = resource.Id }, resource);
     }
 }
