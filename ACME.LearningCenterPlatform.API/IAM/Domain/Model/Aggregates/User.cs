@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using ACME.LearningCenterPlatform.API.IAM.Domain.Model.Commands;
 
 namespace ACME.LearningCenterPlatform.API.IAM.Domain.Model.Aggregates;
 
@@ -21,6 +22,7 @@ public class User(string username, string passwordHash)
     public User() : this(string.Empty, string.Empty)
     {
     }
+    
     
     /***
      * <summary>
